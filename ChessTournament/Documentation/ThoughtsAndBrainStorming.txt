@@ -1,0 +1,15 @@
+﻿classes
+	Tournament
+		Games
+			Players
+			? Clock
+		Players
+			Moves
+			? Clock
+
+
+Clock (Game)
+	15" <- p0
+	30" <- p1
+	45" <- p0
+	60" <- p1
