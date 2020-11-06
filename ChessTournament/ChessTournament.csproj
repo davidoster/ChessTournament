@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\TeenTournament.cs" />
+    <Compile Include="Interfaces\ITournamentActions.cs" />
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Naming.cs" />
@@ -57,9 +59,6 @@
   <ItemGroup>
     <Content Include="Documentation\ThoughtsAndBrainStorming.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLogic\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

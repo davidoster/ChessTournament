@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessTournament.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ChessTournament.Models
 {
-    class Tournament : Naming
-    {
+    class Tournament : Naming, ITournamentActions
+	{
 		private List<Game> _games;
 
 		public List<Game> Games
@@ -29,37 +30,36 @@ namespace ChessTournament.Models
 			this.Start();
 		}
 
-		private void Start()
+		public Tournament(bool Active)
 		{
-			_players = new List<Player>();
-			Player p0, p1, p2, p3;
+			if (Active) this.Start();
+		}
 
+		public void Start()
+		{
+			this._players = new List<Player>();
 			this.Name = "Ultimate Chess Tournament 2020";
 			Console.WriteLine($"Welcome to the exciting world of {this.Name}");
-			
-			Console.Write($"{this.Name} introduces ");
-			p0 = new Player("Paspa");
-			this._players.Add(p0);
-			
-			Console.Write($"{this.Name} introduces ");
-			p1 = new Player("Gasparov");
-			this._players.Add(p1);
-			
-			Console.Write($"{this.Name} introduces ");
-			p2 = new Player("Karpov");
-			this._players.Add(p2);
 
-			Console.Write($"{this.Name} introduces ");
-			p3 = new Player("Medved");
-			this._players.Add(p3);
+			this.IntroToPlayer(this.Name, "Paspa", this._players);
+			this.IntroToPlayer(this.Name, "Gasparov", this._players);
+			this.IntroToPlayer(this.Name, "Karpov", this._players);
+			this.IntroToPlayer(this.Name, "Medved", this._players);
 
-			this._games = new List<Game>() { new Game("Game of Chess 1", new Player[2] { p0, p1}), 
-				                        new Game("Game of Chess 2", new Player[2] { p0, p2}), 
-				                        new Game("Game of Chess 3", new Player[2] { p0, p3})};
+			this._games = new List<Game>() { new Game("Game of Chess 1", new Player[2] { this._players[0], this._players[1]}),
+										new Game("Game of Chess 2", new Player[2] { this._players[0], this._players[2]}),
+										new Game("Game of Chess 3", new Player[2] { this._players[0], this._players[3]})};
 
 			this._games[0].Start();
-			
-			
+
+
+		}
+
+		public void IntroToPlayer(string TournamentName, string PlayerName,  List<Player> players)
+		{
+			Console.Write($"{TournamentName} introduces ");
+			Player p = new Player(PlayerName);
+			players.Add(p);
 		}
 	}
 }

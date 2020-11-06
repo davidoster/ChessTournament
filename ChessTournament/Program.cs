@@ -1,4 +1,5 @@
-﻿using ChessTournament.Models;
+﻿using ChessTournament.BusinessLogic;
+using ChessTournament.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace ChessTournament
     {
         static void Main(string[] args)
         {
-            Tournament t = new Tournament(); 
+            //Tournament t = new Tournament(); 
+            TeenTournament tt = new TeenTournament();
         }
     }
 }
